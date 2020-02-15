@@ -1,0 +1,2 @@
+@custom-media --mobile screen and (max-width: 1280px);
+@custom-media --desktop screen and (min-width: 1281px);
