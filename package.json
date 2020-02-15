@@ -13,7 +13,8 @@
     "prettier": "prettier \"**/*.{vue,scss,sass,css,js,json}\"",
     "prettier:check": "yarn prettier -- --check",
     "prettier:fix": "yarn prettier -- --write",
-    "stylelint:check": "stylelint \"**/*.{vue,scss,sass,css}\""
+    "stylelint:check": "stylelint \"**/*.{vue,scss,sass,css}\"",
+    "analyse:bundle": "NODE_ENV=analyse-bundle vue-cli-service build"
   },
   "dependencies": {
     "core-js": "^3.6.4",
@@ -44,7 +45,9 @@
     "prettier": "^1.19.1",
     "stylelint": "^13.2.0",
     "stylelint-config-standard": "^20.0.0",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "webpack-bundle-analyzer": "^3.6.0",
+    "webpack-merge": "^4.2.2"
   },
   "engines": {
     "npm": ">=5.5.0",
