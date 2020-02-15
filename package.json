@@ -10,8 +10,9 @@
     "test:e2e:headless": "vue-cli-service test:e2e --headless",
     "lint:check": "vue-cli-service lint --no-fix",
     "lint:fix": "vue-cli-service lint",
-    "prettier:format-all": "prettier --write \"**/*.{vue,scss,sass,js,json}\"",
-    "prettier:check": "prettier \"**/*.{vue,scss,sass,js,json}\" --list-different"
+    "prettier": "prettier \"**/*.{vue,scss,sass,css,js,json}\"",
+    "prettier:check": "yarn prettier -- --check",
+    "prettier:fix": "yarn prettier -- --write"
   },
   "dependencies": {
     "core-js": "^3.6.4",
@@ -19,10 +20,6 @@
     "vue": "^2.6.11",
     "vue-router": "^3.1.5",
     "vuex": "^3.1.2"
-  },
-  "engines": {
-    "npm": ">=5.5.0",
-    "node": ">=12.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.2.0",
@@ -37,9 +34,15 @@
     "@vue/test-utils": "1.0.0-beta.31",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.7.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^6.1.2",
     "prettier": "^1.19.1",
     "vue-template-compiler": "^2.6.11"
+  },
+  "engines": {
+    "npm": ">=5.5.0",
+    "node": ">=12.1.0"
   }
 }
