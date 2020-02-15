@@ -12,7 +12,8 @@
     "lint:fix": "vue-cli-service lint",
     "prettier": "prettier \"**/*.{vue,scss,sass,css,js,json}\"",
     "prettier:check": "yarn prettier -- --check",
-    "prettier:fix": "yarn prettier -- --write"
+    "prettier:fix": "yarn prettier -- --write",
+    "stylelint:check": "stylelint \"**/*.{vue,scss,sass,css}\""
   },
   "dependencies": {
     "core-js": "^3.6.4",
@@ -41,6 +42,8 @@
     "postcss-cssnext": "^3.1.0",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^1.19.1",
+    "stylelint": "^13.2.0",
+    "stylelint-config-standard": "^20.0.0",
     "vue-template-compiler": "^2.6.11"
   },
   "engines": {
