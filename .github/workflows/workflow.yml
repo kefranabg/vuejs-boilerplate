@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - master
-      - 'release-**'
+      - 'release-*'
 
 jobs:
   build:
@@ -40,9 +40,9 @@ jobs:
         run: yarn test:e2e:headless
       - name: Deploy
         run: |
-          if [[ "${{ steps.current-branch.outputs.branch-name }}" == "master" ]]; then
+          if [[ "${{ steps.current-branch.outputs.branch-name }}" == master ]]; then
             echo "deploy master"
           fi
-          if [[ "${{ steps.current-branch.outputs.branch-name }}" == "release-*" ]]; then
+          if [[ "${{ steps.current-branch.outputs.branch-name }}" == release-* ]]; then
             echo "deploy release"
           fi
