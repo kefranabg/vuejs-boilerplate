@@ -1,14 +1,12 @@
-name: ci
+name: Deploy prod workflow
 
 on:
-  pull_request:
   push:
     branches:
       - master
-      - 'release/**'
 
 jobs:
-  ci:
+  deploy-prod:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -38,3 +36,8 @@ jobs:
         run: yarn test:unit
       - name: Run e2e tests
         run: yarn test:e2e:headless
+      - name: Build prod
+        run: yarn build:prod
+      - name: Deploy prod
+        run: |
+          echo "Deploy prod"
