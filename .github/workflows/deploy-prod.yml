@@ -1,14 +1,12 @@
-name: CI
+name: Deploy prod workflow
 
 on:
-  pull_request:
   push:
     branches:
       - master
-      - 'release-**'
 
 jobs:
-  build:
+  deploy-prod:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -38,11 +36,8 @@ jobs:
         run: yarn test:unit
       - name: Run e2e tests
         run: yarn test:e2e:headless
-      - name: Deploy
+      - name: Build prod
+        run: yarn build:prod
+      - name: Deploy prod
         run: |
-          if [[ "${{ steps.current-branch.outputs.branch-name }}" == master ]]; then
-            echo "deploy master"
-          fi
-          if [[ "${{ steps.current-branch.outputs.branch-name }}" == release-* ]]; then
-            echo "deploy release"
-          fi
+          echo "Deploy prod"

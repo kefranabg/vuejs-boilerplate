@@ -1,0 +1,43 @@
+name: Deploy staging workflow
+
+on:
+  push:
+    branches:
+      - 'release/**'
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Get yarn cache directory path
+        id: current-branch
+        run: echo "::set-output name=branch-name::$(echo ${GITHUB_REF##*/})"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+            ${{ runner.os }}-
+      - name: Install dependencies
+        run: yarn
+      - name: Check prettier
+        run: yarn prettier:check
+      - name: Check linter
+        run: yarn lint:check
+      - name: Run unit tests
+        run: yarn test:unit
+      - name: Run e2e tests
+        run: yarn test:e2e:headless
+      - name: Build staging
+        run: yarn build:staging
+      - name: Deploy staging
+        run: |
+          echo "Deploy staging"
