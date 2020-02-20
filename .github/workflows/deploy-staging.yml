@@ -38,6 +38,8 @@ jobs:
         run: yarn test:e2e:headless
       - name: Build staging
         run: yarn build:staging
+      - name: Bundlesize check
+        run: yarn bundlesize
       - name: Deploy staging
         run: |
           echo "Deploy staging"

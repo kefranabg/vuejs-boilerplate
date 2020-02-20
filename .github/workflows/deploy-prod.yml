@@ -38,6 +38,8 @@ jobs:
         run: yarn test:e2e:headless
       - name: Build prod
         run: yarn build:prod
+      - name: Bundlesize check
+        run: yarn bundlesize
       - name: Deploy prod
         run: |
           echo "Deploy prod"

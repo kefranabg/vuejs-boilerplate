@@ -36,3 +36,5 @@ jobs:
         run: yarn test:e2e:headless
       - name: Build
         run: yarn build
+      - name: Bundlesize check
+        run: yarn bundlesize
