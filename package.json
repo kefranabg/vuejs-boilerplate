@@ -16,7 +16,8 @@
     "prettier:check": "yarn prettier -- --check",
     "prettier:fix": "yarn prettier -- --write",
     "stylelint:check": "stylelint \"**/*.{vue,scss,sass,css}\"",
-    "analyse:bundle": "NODE_ENV=analyse-bundle vue-cli-service build"
+    "analyse:bundle": "NODE_ENV=analyse-bundle vue-cli-service build",
+    "bundlesize": "bundlesize"
   },
   "dependencies": {
     "core-js": "^3.6.4",
@@ -49,10 +50,25 @@
     "stylelint-config-standard": "^20.0.0",
     "vue-template-compiler": "^2.6.11",
     "webpack-bundle-analyzer": "^3.6.0",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^4.2.2",
+    "bundlesize": "github:kefranabg/bundlesize"
   },
   "engines": {
     "npm": ">=5.5.0",
     "node": ">=12.1.0"
-  }
+  },
+  "bundlesize": [
+    {
+      "path": "./dist/js/chunk-vendors*.js",
+      "maxSize": "50 kB"
+    },
+    {
+      "path": "./dist/js/app*.js",
+      "maxSize": "10 kB"
+    },
+    {
+      "path": "./dist/js/client-chunk-*.js",
+      "maxSize": "5 kB"
+    }
+  ]
 }
