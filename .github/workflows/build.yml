@@ -1,0 +1,22 @@
+name: Build
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for ci to succeed
+        uses: fountainhead/action-wait-for-check@v1.0.0
+        id: wait-for-ci
+        with:
+          token: ${{ secrets.WAIT_FOR_CI }}
+          checkName: ci
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Build project when ci success
+        if: steps.wait-for-build.outputs.conclusion == 'success'
+        run: yarn build

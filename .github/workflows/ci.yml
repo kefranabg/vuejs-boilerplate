@@ -1,14 +1,14 @@
-name: CI
+name: ci
 
 on:
   pull_request:
   push:
     branches:
       - master
-      - 'release-**'
+      - 'release/**'
 
 jobs:
-  build:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -38,11 +38,3 @@ jobs:
         run: yarn test:unit
       - name: Run e2e tests
         run: yarn test:e2e:headless
-      - name: Deploy
-        run: |
-          if [[ "${{ steps.current-branch.outputs.branch-name }}" == master ]]; then
-            echo "deploy master"
-          fi
-          if [[ "${{ steps.current-branch.outputs.branch-name }}" == release-* ]]; then
-            echo "deploy release"
-          fi
