@@ -32,6 +32,8 @@ jobs:
         run: yarn prettier:check
       - name: Check linter
         run: yarn lint:check
+      - name: Check style linter
+        run: yarn stylelint:check
       - name: Run unit tests
         run: yarn test:unit
       - name: Run e2e tests
